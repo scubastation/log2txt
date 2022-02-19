@@ -1,0 +1,45 @@
+			Protokoll der Sicherung auf LTO-Magnetband 
+
+Backup 21.01.2021 12:39:28 gestartet auf AWR11
+
+Befehl 'Backup' wird ausgeführt.
+Befehl 'Backup-Plan 'Backup 21.01.2021 12:39:28' wird ausgeführt' wird ausgeführt.
+Volume F: wird gesperrt...
+Erstelle ein vollständiges Backup  Von:  F:\E 0815_22@Name\ 
+
+Das Band 'Band 3' wurde zum Pool 'Acronis' verschoben.
+Das Band 'Band 3' wurde im Laufwerk 'QUANTUM ULTRIUM 5 3180 (HU1245T3J2)' gemountet.
+
+Das Schreiben auf das Band 'Band 3' wird gestartet.
+Es wurden Daten auf folgende Bänder geschrieben: Band 3.
+Statistik:
+	Anzahl Schreibvorgänge: 941156
+	Gesamte Schreibzeit: 592 Sekunden
+	Insgesamt geschriebene Daten: 123359035392 Byte
+	Durchschnittlich geschriebene Daten: 131071 Byte
+	Gesamtes Schreibintervall: 3285 Sekunden
+	Max. Schreibintervall: 843 Millisekunden
+	Durchschnittliches Schreibintervall: 3 Millisekunden
+	Durchschnittliche Schreibgeschwindigkeit: 208077286 Byte/Sekunde
+
+Befehl 'Backup' wurde erfolgreich abgeschlossen.
+Befehl 'Validierung' wird ausgeführt.
+Archiv-Validierung wurde gestartet.
+Das Band 'Band 3' wurde im Laufwerk 'QUANTUM ULTRIUM 5 3180 (HU1245T3J2)' gemountet.
+
+Archiv-Validierung wurde erfolgreich abgeschlossen.
+Statistik:
+	Anzahl Lesevorgänge: 3765308
+	Gesamte Lesezeit: 769 Sekunden
+	Insgesamt gelesene Daten: 123359019008 Byte
+	Durchschnittlich gelesene Daten: 32761 Byte
+	Gesamtes Leseintervall: 141 Sekunden
+	Max. Leseintervall: 42109 Millisekunden
+	Durchschnittliches Leseintervall: 0 Millisekunden
+	Durchschnittliche Lesegeschwindigkeit: 160309574 Byte/Sekunde
+
+Befehl 'Validierung' wurde erfolgreich abgeschlossen.
+Befehl 'Bänder mit Backups auswerfen' wird ausgeführt.
+Befehl 'Bänder mit Backups auswerfen' wurde erfolgreich abgeschlossen.
+Befehl 'Backup-Plan 'Backup 21.01.2021 12:39:28' wird ausgeführt' wurde erfolgreich 
+abgeschlossen.
