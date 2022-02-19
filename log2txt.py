@@ -23,7 +23,8 @@ with open('Bandlog.txt', 'w', encoding='utf-8') as datei: #Öffnen der Datei
     #Durchackern und bedingt Ausgeben der Elemente
     for child in root:
         if child.attrib['id'] == '1':
-            text = child.attrib['policy'] + " gestartet auf " + child.attrib['Machine'] + "\nmit " + root.attrib['product'] + " Version: "+ root.attrib['version'] + " Build: "+ root.attrib['build']+"\n"
+            text = child.attrib['policy'] + " gestartet auf " + child.attrib['Machine'] + "\nmit " + root.attrib['product'] + " Version: " \
+            + root.attrib['version'] + " Build: "+ root.attrib['build']+"\n"
             datei.write(text + '\n')
 
 
