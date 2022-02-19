@@ -1,6 +1,7 @@
 			Protokoll der Sicherung auf LTO-Magnetband 
 
-Backup 21.01.2021 12:39:28 gestartet auf AWR11
+Backup 21.01.2021 12:39:28 gestartet auf AWR
+mit Acronis Backup Management Console Version: 11 Build: 43994
 
 Befehl 'Backup' wird ausgeführt.
 Befehl 'Backup-Plan 'Backup 21.01.2021 12:39:28' wird ausgeführt' wird ausgeführt.

@@ -13,51 +13,49 @@ def write_mit_umbruch(text, umbruch = 84):
     for i in range(anzahl_zeilen):
         datei.write(text[n:n+umbruch] + '\n') #Schiebt den String in Stücken durch  
         n += umbruch
-try:
-
-    with open('Bandlog.txt', 'w', encoding='utf-8') as datei: #Öffnen der Datei
-        tree = ET.parse('Log.xml') #Parsen in ein Dictionary
-        root = tree.getroot() 
-        datei.write(3 * "\t" + "Protokoll der Sicherung auf LTO-Magnetband \n\n") #Überschrift setzen
-
-        #Durchackern und bedingt Ausgeben der Elemente
-        for child in root:
-            if child.attrib['id'] == '1':
-                text = child.attrib['policy'] + " gestartet auf " + child.attrib['Machine']+"\n"
-                datei.write(text + '\n')
 
 
-            #Der Statistikblock muss erst noch am | als Liste aufgesplittet werden.
-            if 'Statistiken' in child.attrib['message']:
-                datei.write("Statistik:\n")
-                statistik = child.attrib['message'].split("|")
+with open('Bandlog.txt', 'w', encoding='utf-8') as datei: #Öffnen der Datei
+    tree = ET.parse('Log.xml') #Parsen in ein Dictionary
+    root = tree.getroot() 
+    datei.write(3 * "\t" + "Protokoll der Sicherung auf LTO-Magnetband \n\n") #Überschrift setzen
 
-                for item in statistik:
-                    #Die folgende Abfrage von count un find könnte man zusammenfassen, aber so ist sie besser nachzuvollziehen
-                    #sie soll unterscheiden, ob es sich um den nullten = Schreib- oder den ersten = Leseblock handelt
-                    if (count == 0):
-                        if (item.find("Schreib") != -1 or item.find("geschrieb") != -1):
-                            datei.write("\t" + item.lstrip() + '\n' )   #Schmeißt dabei noch das erste Zeichen raus und rückt ein  
-
-
-                    if (count == 1):
-                        if (item.find("Lese") != -1 or item.find("geles") != -1):
-                            datei.write("\t" + item.lstrip() + '\n' )   #Schmeißt dabei noch das erste Zeichen raus und rückt ein  
+    #Durchackern und bedingt Ausgeben der Elemente
+    for child in root:
+        if child.attrib['id'] == '1':
+            text = child.attrib['policy'] + " gestartet auf " + child.attrib['Machine'] + "\nmit " + root.attrib['product'] + " Version: "+ root.attrib['version'] + " Build: "+ root.attrib['build']+"\n"
+            datei.write(text + '\n')
 
 
-                count += 1  # Zeigt an, dass der erste (schreib) Statistikblock durch ist  
-                datei.write("\n")
-                continue # Abbrechen der Bearbeitung, damit das item nicht in die nächten if's rutscht
+        #Der Statistikblock muss erst noch am | als Liste aufgesplittet werden.
+        if 'Statistiken' in child.attrib['message']:
+            datei.write("Statistik:\n")
+            statistik = child.attrib['message'].split("|")
 
-            if 'Komprimierung' in child.attrib['message']:
-                found = child.attrib['message'].find('Zu')    #Hackt die kryptische Meldung nach dem gesicherten Pfad ab
-                write_mit_umbruch(child.attrib['message'][:found] + '\n')
+            for item in statistik:
+                #Die folgende Abfrage von count un find könnte man zusammenfassen, aber so ist sie besser nachzuvollziehen
+                #sie soll unterscheiden, ob es sich um den nullten = Schreib- oder den ersten = Leseblock handelt
+                if (count == 0):
+                    if (item.find("Schreib") != -1 or item.find("geschrieb") != -1):
+                        datei.write("\t" + item.lstrip() + '\n' )   #Schmeißt dabei noch das erste Zeichen raus und rückt ein  
 
 
-            else:   #alle anderen Zeilen Umgebrochen ausgeben
-                write_mit_umbruch(child.attrib['message'])
+                if (count == 1):
+                    if (item.find("Lese") != -1 or item.find("geles") != -1):
+                        datei.write("\t" + item.lstrip() + '\n' )   #Schmeißt dabei noch das erste Zeichen raus und rückt ein  
 
 
-        datei.close() # wird ja durch with automatisch geschlossen, aber Vorsicht ist die Mutter der Porzellankiste 
-except:
-    print("Da liegt keine Log.xml, Du Honk!")
+            count += 1  # Zeigt an, dass der erste (schreib) Statistikblock durch ist  
+            datei.write("\n")
+            continue # Abbrechen der Bearbeitung, damit das item nicht in die nächten if's rutscht
+
+        if 'Komprimierung' in child.attrib['message']:
+            found = child.attrib['message'].find('Zu')    #Hackt die kryptische Meldung nach dem gesicherten Pfad ab
+            write_mit_umbruch(child.attrib['message'][:found] + '\n')
+
+
+        else:   #alle anderen Zeilen Umgebrochen ausgeben
+            write_mit_umbruch(child.attrib['message'])
+
+
+    datei.close() # wird ja durch with automatisch geschlossen, aber Vorsicht ist die Mutter der Porzellankiste 
