@@ -7,7 +7,7 @@ eine Textdatei um.
 
 Die Datei muss im gleichen Verzeichnis, in dem die Log.xlm liegt ausgeführt werden.
 Unter Windows kann die .exe verwendet werden. Einige Virenscanner liefern eine fehlerhafte Meldung!
-Wenn man die Log.xml im Explorer mit der Maus auf die .Exe zieht schlagen die Scanner nicht Alarm - strange. 
+Die Datei habe ich zum Avira-Service hochgeladen - Check als Foto anbei. 
 Ansonsten einfach: python log2txt.py von der Konsole
 Ergebnis ist eine Datei namens Bandlog.txt
 
